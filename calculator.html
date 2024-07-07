@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="favicon/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <link href="bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="bootstrap/css/sweetalert2.min.css">
+    <title>CGPA Calculator</title>
+</head>
+
+<body class="bg-light">
+
+    <!-- Nav -->
+    <nav
+        class="py-1 py-md-0 navbar navbar-expand-lg bg-white custom-navbar fixed-top shadow mb-3 border-top border-success border-2">
+        <div class="container ps-1">
+            <!-- Mobile -->
+            <a href="index.html" class=" w-75 d-md-none py-0 d-flex navbar-brand brand-gradient fw-medium">
+                <span class="d-md-none  text-center w-100 m-0 text-bg-success" style="padding: 0.6rem 0.6rem;">
+                    CGPA Calculator
+                </span>
+            </a>
+            <!-- Desktop -->
+            <a href="index.html" class="d-none d-md-flex py-0 d-flex navbar-brand brand-gradient fw-medium">
+                <span class="d-none d-md-block p-3 m-0 text-bg-success d-grid d-md-inline w-100"
+                    style="font-size: 1.7rem;">
+                    University CGPA Calculator
+                </span>
+            </a>
+            <button type="button" class="navbar-toggler border-0" data-bs-toggle="collapse"
+                data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false">
+                <i class="bi bi-list"></i>
+            </button>
+            <div class="collapse navbar-collapse ps-2 ps-md-0" id="navbarContent">
+                <!-- Mobile -->
+                <ul class="navbar-nav mx-auto mb-2 mb-md-0 d-md-none fs-6">
+                    <li class="nav-item me-5">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="calculator.html" class="nav-link active" aria-current="page">Calculator</a>
+                    </li>
+                </ul>
+                <!-- Desktop -->
+                <ul class="navbar-nav mx-auto mb-2 mb-md-0 d-none d-md-flex fs-5">
+                    <li class="nav-item me-5">
+                        <a href="index.html" class="nav-link underline-on-hover">
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="calculator.html" class="nav-link active underline-on-hover" aria-current="page">
+                            Calculator
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Nav End -->
+
+    <!-- Content -->
+    <section>
+        <div class="container mt-5 pt-4 pt-md-5 mb-3">
+            <div class="row g-md-5">
+                <!-- Main -->
+                <div class="col-md-9">
+                    <!-- Calculator -->
+                    <div class="bg-white shadow p-3 rounded mb-3 px-md-4">
+                        <!-- Calculator Box -->
+                        <div class="calculator-box c-color">
+                            <h2>CGPA CALCULATOR</h2>
+                            <p class="c-fs">This CGPA Calculator is based on 5-point grading system.</p>
+
+                            <div class="card">
+                                <div class="card-body">
+                                    <div id="semester-wrapper">
+                                        <!-- Semesters will be dynamically added here -->
+                                    </div>
+                                </div>
+
+                                <div id="result-container" class="px-2 px-md-4 c-color fw-medium text-success">
+                                    <div id="cgpa-results">
+                                        <!-- Individual semester and overall CGPA results will be displayed here -->
+                                    </div>
+                                </div>
+
+                                <div class="table-group-divider mt-2 mx-3 mx-md-4"></div>
+                                <div class="btn d-grid d-md-flex text-center my-2">
+                                    <button
+                                        class="btn bg-primary-subtle border mx-2 my-1 my-md-0 d-inline-flex align-items-center justify-content-center"
+                                        onclick="addSemester()">
+                                        <i class="bi bi-folder-plus me-2"></i>
+                                        Add Semester
+                                    </button>
+                                    <button
+                                        class="btn bg-danger-subtle border mx-2 my-1 my-md-0 d-inline-flex align-items-center justify-content-center"
+                                        onclick="removeSemester()">
+                                        <i class="bi bi-folder-x me-2"></i>
+                                        Remove Semester
+                                    </button>
+                                    <button
+                                        class="btn btn-success border mx-2 my-1 my-md-0 d-inline-flex align-items-center justify-content-center"
+                                        onclick="calcCgpa()">
+                                        <i class="bi bi-calculator-fill me-2"></i>
+                                        View Result
+                                    </button>
+                                    <button
+                                        class="btn bg-info-subtle border-info border-1 text-dark border mx-2 my-1 my-md-0 d-inline-flex align-items-center justify-content-center"
+                                        onclick="printResults()">
+                                        <i class="bi bi-printer-fill me-2"></i>
+                                        Print Result
+                                    </button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Content -->
+                    <div class="bg-white shadow p-3 rounded mt-md-4 mb-3 px-md-4 c-color">
+                        <h3>CGPA Calculator Instructions</h3>
+                        <div class="content">
+                            <h4 class="section-title">Overview</h4>
+                            <p class="c-fs">The CGPA calculator helps you compute your Cumulative Grade Point Average
+                                based on your course grades and credit units.</p>
+
+                            <h4 class="section-title">Steps to Use</h4>
+                            <ol>
+                                <li class="c-fs">Initialize with one semester and course.</li>
+                                <li class="c-fs">Add semesters and courses as needed.</li>
+                                <li class="c-fs">Remove semesters or courses when necessary.</li>
+                                <li class="c-fs">Enter course details: code, credit units, and grade.</li>
+                                <li class="c-fs">Calculate CGPA to view semester and overall results.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                <!-- Main End -->
+
+                <!-- Sidebar -->
+                <div class="col-md-3">
+                    <!-- Home Card -->
+                    <div
+                        class="p-4 shadow border-start border-success border-2 border-top-0 border-end-0 border-bottom-0">
+                        <div class="card-header border-0">
+                            <h4 class="text-success card-title text-success pb-2">Related Links</h4>
+                        </div>
+                    </div>
+                    <!-- Home Card -->
+                    <div
+                        class="p-4 mt-3 mt-md-4 shadow border-start border-success border-2 border-top-0 border-end-0 border-bottom-0">
+                        <div class="card-header border-0">
+                            <h4
+                                class="mb-3 c-color card-title text-success border-bottom border-start-0 border-top-0 border-end-0 pb-2">
+                                How to Calculate CGPA ?
+                            </h4>
+                        </div>
+                        <a href="index.html" class="text-decoration-none d-block text-center py-3">
+                            <img class="img-fluid img card-img card-img-top c-success animated-image"
+                                src="images/report.png" alt="A Plus" style="width: 40%;">
+                            <h5 class="text-center card-title c-color mt-md-3 mt-2">
+                                <span class="underline-on-hover">Home</span>
+                            </h5>
+                        </a>
+                    </div>
+
+                    <!-- Calculator Card -->
+                    <div
+                        class="p-4 mt-3 mt-md-4 shadow border-start border-success border-2 border-top-0 border-end-0 border-bottom-0">
+                        <div class="card-header border-0">
+                            <h4
+                                class="mb-3 text-success card-title c-color border-bottom border-start-0 border-top-0 border-end-0 pb-2">
+                                Start Right Away
+                            </h4>
+                        </div>
+                        <a href="calculator.html" class="text-decoration-none d-block text-center py-3">
+                            <img class="img-fluid img card-img card-img-top" src="images/calculator.webp" alt="A Plus"
+                                style="width: 40%;">
+                            <h5 class="text-center card-title c-color mt-md-3 mt-2">
+                                <span class="underline-on-hover">Calculator</span>
+                            </h5>
+                        </a>
+                    </div>
+                </div>
+                <!-- Sidebar End -->
+            </div>
+        </div>
+    </section>
+    <!-- Content End -->
+
+    <!-- Footer -->
+    <footer class="py-2 text-bg-light shadow-sm border py-3 py-md-4">
+        <div class="container">
+            <div class="text-center fw-medium">
+                <span class="text-secondary">&copy; 2024 Research Project: </span>
+                <span class="c-color">Android CGPA Calculator</span>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
+
+
+    <script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="bootstrap/js/jquery-3.7.1.js"></script>
+    <script src="bootstrap/js/sweetalert2@11.js"></script>
+    <script src="script/script.js"></script>
+
+</body>
+
+</html>
